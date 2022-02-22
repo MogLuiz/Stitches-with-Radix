@@ -4,16 +4,17 @@ import Head from "next/head";
 // Types
 import type { NextPage } from "next";
 
+// Radix
+import { violet, slate } from "@radix-ui/colors";
+
 // Stitches styles
 import { createStitches } from "@stitches/core";
 
 const { css } = createStitches({
   theme: {
     colors: {
-      baseGray: "gainsboro",
-      darkGray: "lightgray",
-      basePurple: "blueviolet",
-      darkPurple: "darkviolet",
+      ...violet,
+      ...slate,
     },
     space: {
       1: "5px",
@@ -64,16 +65,17 @@ const button = css({
     },
     variant: {
       gray: {
-        backgroundColor: "$baseGray",
-
+        backgroundColor: "$slate3",
+        color: "$slate12",
         "&:hover": {
-          backgroundColor: "$darkGray",
+          backgroundColor: "$slate4",
         },
       },
       purple: {
-        backgroundColor: "$basePurple",
+        backgroundColor: "$violet3",
+        color: "$violet11",
         "&:hover": {
-          backgroundColor: "$darkPurple",
+          backgroundColor: "$violet4",
         },
       },
     },
@@ -91,18 +93,14 @@ const button = css({
       variant: "gray",
       outlined: true,
       css: {
-        borderColor: "$darkGray",
+        borderColor: "$slate7",
       },
     },
     {
       variant: "purple",
       outlined: true,
       css: {
-        borderColor: "$darkPurple",
-        color: "$darkPurple",
-        "&:hover": {
-          color: "White",
-        },
+        borderColor: "$violet7",
       },
     },
   ],
