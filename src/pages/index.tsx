@@ -12,12 +12,20 @@ const body = css({ padding: 40 });
 const button = css({
   appearance: "none",
   border: "none",
-  height: 25,
-  fontSize: 13,
 
   borderRadius: "9999px",
 
   variants: {
+    size: {
+      1: {
+        height: 25,
+        fontSize: 13,
+      },
+      2: {
+        height: 35,
+        fontSize: 15,
+      },
+    },
     variant: {
       gray: {
         backgroundColor: "Gainsboro",
@@ -65,6 +73,7 @@ const button = css({
 
   defaultVariants: {
     variant: "gray",
+    size: 1,
   },
 });
 
@@ -79,6 +88,17 @@ const Home: NextPage = () => {
       <button className={button({ outlined: true })}>Button Outlined</button>
       <button className={button({ variant: "purple", outlined: true })}>
         Purple Outlined
+      </button>
+      <hr />
+      <button
+        className={button({
+          size: {
+            "@initial": "1",
+            "@media (min-width: 500px)": "2",
+          },
+        })}
+      >
+        Responsive Button
       </button>
     </div>
   );
