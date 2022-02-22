@@ -5,7 +5,43 @@ import Head from "next/head";
 import type { NextPage } from "next";
 
 // Stitches styles
-import { css } from "@stitches/core";
+import { createStitches } from "@stitches/core";
+
+const { css } = createStitches({
+  theme: {
+    colors: {
+      baseGray: "gainsboro",
+      darkGray: "lightgray",
+      basePurple: "blueviolet",
+      darkPurple: "darkviolet",
+    },
+    space: {
+      1: "5px",
+      2: "10px",
+      3: "15px",
+      4: "20px",
+      5: "25px",
+      6: "30px",
+      7: "35px",
+    },
+    sizes: {
+      1: "5px",
+      2: "10px",
+      3: "15px",
+      4: "20px",
+      5: "25px",
+      6: "30px",
+      7: "35px",
+    },
+    radii: {
+      round: "9999px",
+    },
+    fontSizes: {
+      1: "13px",
+      2: "15px",
+    },
+  },
+});
 
 const body = css({ padding: 40 });
 
@@ -13,31 +49,31 @@ const button = css({
   appearance: "none",
   border: "none",
 
-  borderRadius: "9999px",
+  borderRadius: "$round",
 
   variants: {
     size: {
       1: {
-        height: 25,
-        fontSize: 13,
+        height: "$5",
+        fontSize: "$1",
       },
       2: {
-        height: 35,
-        fontSize: 15,
+        height: "$7",
+        fontSize: "$2",
       },
     },
     variant: {
       gray: {
-        backgroundColor: "Gainsboro",
+        backgroundColor: "$baseGray",
 
         "&:hover": {
-          backgroundColor: "LightGray",
+          backgroundColor: "$darkGray",
         },
       },
       purple: {
-        backgroundColor: "BlueViolet",
+        backgroundColor: "$basePurple",
         "&:hover": {
-          backgroundColor: "DarkViolet",
+          backgroundColor: "$darkPurple",
         },
       },
     },
@@ -55,15 +91,15 @@ const button = css({
       variant: "gray",
       outlined: true,
       css: {
-        borderColor: "LightGray",
+        borderColor: "$darkGray",
       },
     },
     {
       variant: "purple",
       outlined: true,
       css: {
-        borderColor: "DarkViolet",
-        color: "DarkViolet",
+        borderColor: "$darkPurple",
+        color: "$darkPurple",
         "&:hover": {
           color: "White",
         },
