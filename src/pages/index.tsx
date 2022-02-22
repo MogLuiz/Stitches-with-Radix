@@ -16,14 +16,16 @@ const button = css({
   fontSize: 13,
 
   borderRadius: "9999px",
-  backgroundColor: "Gainsboro",
-
-  "&:hover": {
-    backgroundColor: "LightGray",
-  },
 
   variants: {
     variant: {
+      gray: {
+        backgroundColor: "Gainsboro",
+
+        "&:hover": {
+          backgroundColor: "LightGray",
+        },
+      },
       purple: {
         backgroundColor: "BlueViolet",
         "&:hover": {
@@ -31,6 +33,38 @@ const button = css({
         },
       },
     },
+
+    outlined: {
+      true: {
+        border: "1px solid",
+        background: "transparent",
+      },
+    },
+  },
+
+  compoundVariants: [
+    {
+      variant: "gray",
+      outlined: true,
+      css: {
+        borderColor: "LightGray",
+      },
+    },
+    {
+      variant: "purple",
+      outlined: true,
+      css: {
+        borderColor: "DarkViolet",
+        color: "DarkViolet",
+        "&:hover": {
+          color: "White",
+        },
+      },
+    },
+  ],
+
+  defaultVariants: {
+    variant: "gray",
   },
 });
 
@@ -42,6 +76,10 @@ const Home: NextPage = () => {
       </Head>
       <button className={button()}>Salvar</button>
       <button className={button({ variant: "purple" })}>Button Purple</button>
+      <button className={button({ outlined: true })}>Button Outlined</button>
+      <button className={button({ variant: "purple", outlined: true })}>
+        Purple Outlined
+      </button>
     </div>
   );
 };
