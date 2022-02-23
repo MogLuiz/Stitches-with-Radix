@@ -8,7 +8,7 @@ import type { NextPage } from "next";
 import { violet, slate } from "@radix-ui/colors";
 
 // Stitches styles
-import { createStitches } from "@stitches/core";
+import { createStitches, ScaleValue } from "@stitches/core";
 
 const { css } = createStitches({
   theme: {
@@ -42,6 +42,16 @@ const { css } = createStitches({
       2: "15px",
     },
   },
+  utils: {
+    paddingX: (value: ScaleValue<"space">) => ({
+      paddingLeft: value,
+      paddingRight: value,
+    }),
+    paddingY: (value: ScaleValue<"space">) => ({
+      paddingTop: value,
+      paddingBottom: value,
+    }),
+  },
 });
 
 const body = css({ padding: 40 });
@@ -51,6 +61,7 @@ const button = css({
   border: "none",
 
   borderRadius: "$round",
+  paddingX: "$2",
 
   variants: {
     size: {
@@ -117,13 +128,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Stitches and Radix</title>
       </Head>
-      <button className={button()}>Salvar</button>
-      <button className={button({ variant: "purple" })}>Button Purple</button>
-      <button className={button({ outlined: true })}>Button Outlined</button>
-      <button className={button({ variant: "purple", outlined: true })}>
-        Purple Outlined
-      </button>
-      <hr />
+
       <button
         className={button({
           size: {
@@ -134,6 +139,7 @@ const Home: NextPage = () => {
       >
         Responsive Button
       </button>
+      <button className={button({ variant: "purple" })}>Open Profile</button>
     </div>
   );
 };
